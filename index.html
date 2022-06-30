@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whether-App</title>
+    <style>
+        #nav {
+            display: flex;
+            height: 40px;
+            background-color: black;
+            color: white;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input,
+        button {
+            background: none;
+            border: none;
+            color: white;
+            outline: none;
+        }
+
+        #con {
+            width: 40%;
+            margin: auto;
+            text-align: center;
+            gap: 20px;
+            display: flex;
+        }
+
+        #con>div {
+            width: 50%;
+        }
+
+        .gmap_canvas {
+            margin: auto;
+            overflow: hidden;
+            background: none !important;
+            height: 500px;
+            width: 600px;
+        }
+
+        #day7 {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            padding: 30px;
+            border-radius: 10px;
+            justify-content: space-between;
+        }
+
+        #day7>div {
+            color: black;
+            padding: 8px 8px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        body {
+            margin: 0%;
+            padding: 15px;
+            background: url("data:image/jpeg;base64,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") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div>
+            <button onclick="getWeather()" id="auto">Auto Location</button>
+        </div>
+        <div>
+            <input type="text" id="city" placeholder="Enter City Name">
+            <button onclick="getData()" id="submit">Submit</button>
+        </div>
+    </div>
+
+    <div id="con">
+        <div id="one1"></div>
+        <div id="two2"></div>
+    </div>
+
+
+    <div class="gmap_canvas">
+        <iframe width="600" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0"
+            marginwidth="0"></iframe>
+    </div>
+
+    <div id="day7">
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+        <div id="four"></div>
+        <div id="five"></div>
+        <div id="six"></div>
+        <div id="seven"></div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+<script>
+    function getData() {
+
+        let city = document.getElementById("city").value
+
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8a3d206981c2cdaef3e3be297ffc21f6`
+
+
+        fetch(url)
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (res) {
+                console.log(res)
+
+                append(res)
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+    }
+
+
+    function getDataLocation(lat, lon) {
+
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8a3d206981c2cdaef3e3be297ffc21f6`
+
+
+        fetch(url)
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (res) {
+                console.log(res)
+
+                append(res)
+
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+    }
+
+
+    function append(data) {
+        let con = document.getElementById("con")
+        let one1 = document.getElementById("one1")
+        let two2 = document.getElementById("two2")
+
+
+        let map = document.getElementById("gmap_canvas")
+        map.src = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+
+        con.innerHTML = ""
+        one1.innerHTML = ""
+        two2.innerHTML = ""
+        
+        let city = document.createElement("h1")
+        city.innerText = `${data.name}`;
+
+        let maxt = document.createElement("h4")
+        maxt.innerText = `Max-Temp : ${Math.ceil(data.main.temp_max - 273)} °C`
+
+        let temp = document.createElement("h1")
+        temp.innerText = `${Math.ceil(data.main.temp - 273)} °C`
+
+        let mint = document.createElement("h4")
+        mint.innerText = `Min-Temp : ${Math.ceil(data.main.temp_min - 273)} °C`
+
+        let humid = document.createElement("h4")
+        humid.innerText = `Humidity : ${data.main.humidity} %`
+
+
+        let sunr = document.createElement("h4")
+        sunr.innerText = "Sun Rise "
+
+        let a = new Date((data.sys.sunrise) * 1000)
+
+        let suns = document.createElement("h4")
+        suns.innerText = "Sun Set "
+
+        let b = new Date((data.sys.sunset) * 1000)
+
+
+        let wind = document.createElement("h4")
+        wind.innerText = `Wind : ${data.wind.speed} km/h`
+
+        let cloud = document.createElement("h4")
+        cloud.innerText = `${data.weather[0].description}`
+
+        one1.append(temp, maxt, mint, humid, wind, cloud)
+        two2.append(city, sunr, a, suns, b)
+        con.append(one1, two2)
+
+      //-------------for 7 day--------------------//
+
+        let url3 = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,minutely&appid=8a3d206981c2cdaef3e3be297ffc21f6`;
+
+        fetch(url3)
+            .then(function (data1) {
+                return data1.json()
+            }).then(function (data1) {
+                let today = new Date()
+                let day = today.getDay()
+
+                day++
+                let daylist = ["Sun", "Mon", "Tue", "Wed ", "Thu", "Fri", "Sat"];
+                let counter = ["one", "two", "three", "four", "five", "six", "seven"]
+                let temp = [];
+                for (let i = 0; i < 7; i++) {
+                    if (day == 7) {
+                        day = 0
+                    }
+                    temp.push(daylist[day])
+                    day++
+
+                    let icon = document.createElement("img");
+                    icon.src = `http://openweathermap.org/img/wn/${data1.daily[i].weather[0].icon}.png`;
+
+                    let value = document.createElement("div");
+                    value.innerHTML = Math.floor(data1.daily[i].temp.min - 273) + "<sup>o</sup>C";
+                    let dayv = document.createElement("div");
+                    dayv.innerText = temp[i];
+                    document.querySelector(`#${counter[i]}`).innerText = "";
+                    document.querySelector(`#${counter[i]}`).append(dayv, icon, value);
+
+
+                }
+            })
+    }
+
+    //-----------get auto weather----------------
+
+
+    function getWeather() {
+
+        navigator.geolocation.getCurrentPosition(success)
+        function success(possition) {
+            var crd = possition.coords;
+
+            console.log('Your current position is:');
+            console.log(`Latitude : ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`More or less ${crd.accuracy} meters.`);
+
+            getDataLocation(crd.latitude, crd.longitude)
+        }
+    }
+</script>
